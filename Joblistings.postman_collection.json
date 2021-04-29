@@ -1,0 +1,50 @@
+{
+	"info": {
+		"_postman_id": "45b86637-942e-43ea-8035-6e72ea197883",
+		"name": "Joblistings",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET job details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44320/api/Joblistings/0B589B5A-0CE7-40CD-BE72-6A9DD5EC4762",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44320",
+					"path": [
+						"api",
+						"Joblistings",
+						"0B589B5A-0CE7-40CD-BE72-6A9DD5EC4762"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all joblistings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44320/api/Joblistings",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44320",
+					"path": [
+						"api",
+						"Joblistings"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

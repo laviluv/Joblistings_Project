@@ -1,0 +1,27 @@
+ n:
+ 
+ cd "N:\AF Kompetensutveckling Lexicon\githublavi\Joblistings"
+ 
+ git rm -r *  
+ 
+ git commit -m "nuke repository contents and start fresh"
+ 
+ git push
+ 
+ git init
+ 
+ #git remote add jobs 
+ git remote add upstream https://github.com/laviluv/Joblistingsprojekt.git
+
+ 
+ git add "API.csproj" "Controllers/" "InsertDataSampleSQLQuery.txt" "Joblistings.postman_collection.json" "Joblistings.sln" "Program.cs" "Properties/" "Startup.cs" "WeatherForecast.cs" "appsettings.Development.json" "appsettings.json" "client-frontend/" "Git code.txt"
+ 
+ git status
+ 
+ #use "git rm --cached <file>..." to unstage
+ 
+ git commit -am "MESSAGE"
+ 
+ #git pull origin master
+ 
+ git push origin master
