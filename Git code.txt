@@ -1,12 +1,14 @@
  n:
  
- cd "N:\AF Kompetensutveckling Lexicon\githublavi\Joblistings"
+ cd "N:\AF Kompetensutveckling Lexicon\githublavi\Joblistingsfinal"
  
  git rm -r *  
  
- git commit -m "nuke repository contents and start fresh"
+ git commit -m "purge repo contents and start fresh"
  
- git push
+ git push -f origin master
+ 
+ #git push --set-upstream origin master
  
  git init
  
@@ -14,7 +16,7 @@
  git remote add upstream https://github.com/laviluv/Joblistingsprojekt.git
 
  
- git add "API.csproj" "Controllers/" "InsertDataSampleSQLQuery.txt" "Joblistings.postman_collection.json" "Joblistings.sln" "Program.cs" "Properties/" "Startup.cs" "WeatherForecast.cs" "appsettings.Development.json" "appsettings.json" "client-frontend/" "Git code.txt"
+ git add "API" "App" "Domain" "DataLayer" "InsertDataSampleSQLQuery.txt" "Joblistings.postman_collection.json" "client-frontend/" "Git code.txt"
  
  git status
  
@@ -25,3 +27,15 @@
  #git pull origin master
  
  git push origin master
+ 
+ 
+ 
+ git remote add origin https://github.com/laviluv/Joblistingsprojekt.git
+
+//pull those changes
+git pull origin master 
+
+// or optionally, 'git pull origin master --allow-unrelated-histories' if you have initialized repo in github and also committed locally
+
+//now, push your work to your new repo
+git push origin master

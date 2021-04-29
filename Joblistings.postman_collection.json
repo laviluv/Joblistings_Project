@@ -11,16 +11,16 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:44320/api/Joblistings/0B589B5A-0CE7-40CD-BE72-6A9DD5EC4762",
+					"raw": "https://localhost:44358/api/Joblistings/0b589b5a-0ce7-40cd-be72-6a9dd5ec4762",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "44320",
+					"port": "44358",
 					"path": [
 						"api",
 						"Joblistings",
-						"0B589B5A-0CE7-40CD-BE72-6A9DD5EC4762"
+						"0b589b5a-0ce7-40cd-be72-6a9dd5ec4762"
 					]
 				}
 			},
@@ -32,16 +32,32 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:44320/api/Joblistings",
+					"raw": "https://localhost:44358/api/Joblistings",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "44320",
+					"port": "44358",
 					"path": [
 						"api",
 						"Joblistings"
 					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "React get joblistings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000"
 				}
 			},
 			"response": []
