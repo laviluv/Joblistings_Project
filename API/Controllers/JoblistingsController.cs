@@ -34,14 +34,16 @@ namespace API.Controllers
 
         }
 
-
-
-        /*
         // POST api/<JoblistingsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> CreateJoblisting(Joblisting joblisting)
         {
+            return Ok(await Mediator.Send(new Create.CreateCommand { Joblisting = joblisting }));
         }
+
+
+
+       /*
 
         // PUT api/<JoblistingsController>/5
         [HttpPut("{id}")]
