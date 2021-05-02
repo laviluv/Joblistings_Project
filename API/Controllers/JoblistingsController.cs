@@ -1,11 +1,13 @@
 ﻿using DataLayer;
 using Domain;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using App.Joblistings;
 
 namespace API.Controllers
 {
@@ -15,14 +17,21 @@ namespace API.Controllers
 
 
 
-    //Add dbcontext to make sure the joblistings can be listed from the db
+    //v0.0.1 Add dbcontext to make sure the joblistings can be listed from the db
     //temporary fix beacuse the controller does not need to know the dbcontext
-    {
-        private readonly JobDbContext _context;
 
-        public JoblistingsController(JobDbContext context)
+        //v0.0.2 injecting MediatR instead of the dbcontext
+    {
+       // private readonly JobDbContext _context;
+        private readonly IMediator mediator;
+
+        //public JoblistingsController(JobDbContext context)
+        //{
+        //    _context = context;
+        //}
+        public JoblistingsController(IMediator mediator)
         {
-            _context = context;
+            this.mediator = mediator;
         }
 
         //endpoints
@@ -31,7 +40,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Joblisting>>> GetJoblistings()
         {
-            return await _context.Joblistings.ToListAsync();
+            return await mediator.Send(new List.Query());
 
 
         }
@@ -42,7 +51,8 @@ namespace API.Controllers
         public async Task<ActionResult<Joblisting>> GetJoblisting(Guid id)
         {
 
-            return await _context.Joblistings.FindAsync(id);
+            //  return await _context.Joblistings.FindAsync(id);
+            return Ok();
 
         }
 
