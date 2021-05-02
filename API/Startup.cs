@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using App.Joblistings;
+using App.CommonCore;
 
 namespace Joblistings
 {
@@ -66,6 +67,9 @@ namespace Joblistings
 
             //indicates where MediatR can find the query handlers
             services.AddMediatR(typeof(List.Handler).Assembly);
+
+            //specify where the mapping profiles are located and start the service
+            services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 
         }
 
