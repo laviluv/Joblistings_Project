@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace App.Joblistings
 {
-    class List
+    public class List
     {
 
         //Query using MediatR
