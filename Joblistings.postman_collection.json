@@ -71,7 +71,7 @@
 						"exec": [
 							"var timestr = require(\"moment\");\r",
 							"\r",
-							"pm.environment.set('joblistingDate', timestr().add(3, 'days').toISOString());"
+							"pm.environment.set('joblistingDate', timestr().add(5, 'days').toISOString());"
 						],
 						"type": "text/javascript"
 					}
@@ -89,7 +89,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"id\": \"{{$guid}}\",\n\t\"title\": \"Joblisting 5 created with API\",\n    \"date\": \"{{joblistingDate}}\",\n\t\"description\": \"Description of the API added joblisting\"\n    \"category\": \"Test through API\"\n}"
+					"raw": "{\n\t\"id\": \"{{$guid}}\",\n\t\"title\": \"Joblisting 5 created with API!!!\",\n    \"date\": \"{{joblistingDate}}\",\n\t\"description\": \"Description of the API added joblisting\",\n    \"category\": \"Test through API\"\n}"
 				},
 				"url": {
 					"raw": "https://localhost:44358/api/Joblistings",
@@ -101,6 +101,51 @@
 					"path": [
 						"api",
 						"Joblistings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Joblisting",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var timestr = require(\"moment\");\r",
+							"\r",
+							"pm.environment.set('joblistingDate', timestr().add(3, 'days').toISOString());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"{{$guid}}\",\n\t\"title\": \"Joblisting 5 EDITED with API\",\n    \"date\": \"{{joblistingDate}}\",\n\t\"description\": \"Description of the API edited joblisting 5\",\n    \"category\": \"Test through API\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44358/api/Joblistings/0b589b5a-0ce7-40cd-be72-6a9dd5ec4762",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44358",
+					"path": [
+						"api",
+						"Joblistings",
+						"0b589b5a-0ce7-40cd-be72-6a9dd5ec4762"
 					]
 				}
 			},

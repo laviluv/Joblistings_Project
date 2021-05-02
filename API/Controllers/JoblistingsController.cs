@@ -42,14 +42,17 @@ namespace API.Controllers
         }
 
 
-
-       /*
-
-        // PUT api/<JoblistingsController>/5
+        // PUT api/<JoblistingsController>
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> EditJoblisting(Guid id, Joblisting joblisting)
         {
+            joblisting.Id = id;
+            return Ok(await Mediator.Send(new Edit.EditCommand { Joblisting = joblisting }));
         }
+
+
+
+        /*
 
         // DELETE api/<JoblistingsController>/5
         [HttpDelete("{id}")]
