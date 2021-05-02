@@ -61,6 +61,50 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Create Joblisting",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var timestr = require(\"moment\");\r",
+							"\r",
+							"pm.environment.set('joblistingDate', timestr().add(3, 'days').toISOString());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"{{$guid}}\",\n\t\"title\": \"Joblisting 5 created with API\",\n    \"date\": \"{{joblistingDate}}\",\n\t\"description\": \"Description of the API added joblisting\"\n    \"category\": \"Test through API\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44358/api/Joblistings",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44358",
+					"path": [
+						"api",
+						"Joblistings"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
