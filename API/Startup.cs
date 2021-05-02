@@ -15,6 +15,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using App.Joblistings;
 using App.CommonCore;
+using API.Extensions;
 
 namespace Joblistings
 {
@@ -34,42 +35,12 @@ namespace Joblistings
         {
             services.AddControllers();
 
-
             //add the dbcontext to the service startup container
             services.AddDbContext<JobDbContext>(options =>
-          options.UseSqlServer(Configuration.GetConnectionString("JoblistingsDatabase")));
+              options.UseSqlServer(Configuration.GetConnectionString("JoblistingsDatabase")));
 
-
-
-
-
-            //localhost allow http requests through cors from the React app layer
-            services.AddCors(
-               opt => {
-                   opt.AddPolicy("EnableCorsPolicy", options =>
-                   {
-                       options.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
-                   });
-               });
-
-
-
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy(name: EnableCorsPolicy,
-            //                      builder =>
-            //                      {
-            //                          builder.WithOrigins(
-            //                                              "http://localhost:3000");
-            //                      });
-            //});
-
-
-            //indicates where MediatR can find the query handlers
-            services.AddMediatR(typeof(List.Handler).Assembly);
-
-            //specify where the mapping profiles are located and start the service
-            services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+            //separated the additional services added as extensions
+            services.AllServices();
 
         }
 
