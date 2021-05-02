@@ -22,6 +22,7 @@ namespace API.Controllers
        // private readonly JobDbContext _context;
         private  IMediator mediator;
 
+        //v0.0.3 added the MEdiatR service to get the data 
         protected IMediator Mediator => mediator ??= HttpContext.RequestServices.GetService<IMediator>();
     }
 
