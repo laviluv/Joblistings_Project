@@ -51,16 +51,11 @@ namespace API.Controllers
         }
 
 
-
-        /*
-
-        // DELETE api/<JoblistingsController>/5
+        // DELETE api/<JoblistingsController>
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> DeleteJoblisting(Guid id)
         {
+            return Ok(await Mediator.Send(new Delete.DeleteCommand { Id = id }));
         }
-
-        */
-
     }
 }
