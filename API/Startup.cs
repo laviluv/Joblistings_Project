@@ -1,4 +1,5 @@
 using DataLayer;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using App.Joblistings;
 
 namespace Joblistings
 {
@@ -60,6 +62,10 @@ namespace Joblistings
             //                                              "http://localhost:3000");
             //                      });
             //});
+
+
+            //indicates where MediatR can find the query handlers
+            services.AddMediatR(typeof(List.Handler).Assembly);
 
         }
 
