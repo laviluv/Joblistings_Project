@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-//using App.Joblistings;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace API.Controllers
 {
@@ -12,6 +13,16 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class BaseAPIController : ControllerBase
     {
+
+         //v0.0.1 Add dbcontext to make sure the joblistings can be listed from the db
+    //temporary fix beacuse the controller does not need to know the dbcontext
+
+        //v0.0.2 injecting MediatR instead of the dbcontext
+    
+       // private readonly JobDbContext _context;
+        private  IMediator mediator;
+
+        protected IMediator Mediator => mediator ??= HttpContext.RequestServices.GetService<IMediator>();
     }
 
 
