@@ -11,16 +11,18 @@ function App() {
     //getting the state of jobs through the http request resonse data (jobs)
     useEffect(() => {
         axios.get("https://localhost:44358/api/joblistings").then(response => {
-            console.log(response);
+      //      console.log(response);
             setJobs(response.data);
         })
     }, [])
 
+
+    // <!--img src={logo} className="App-logo" alt="logo" /--> 
     return (
         <div className="App">
             <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <h1>Available Job Listings:</h1>
+               
+                <h3>Available Job Listings:</h3>
                 <ul>
 
                     {jobs.map((job: any) => (
