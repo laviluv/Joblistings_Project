@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import axios from 'axios'; //handle http requests and components' state
+import './style.css';
+import { Joblisting } from '../models/joblisting';
 
 function App() {
 
     //getting the jobs and managing the state through useState
-    const [jobs, setJobs] = useState([]);
+    //added ts typing Joblisting
+    const [jobs, setJobs] = useState<Joblisting[]>([]);
 
     //getting the state of jobs through the http request resonse data (jobs)
+    //added ts for typing Joblisting
     useEffect(() => {
-        axios.get("https://localhost:44358/api/joblistings").then(response => {
+        axios.get<Joblisting[]>("https://localhost:44358/api/joblistings").then(response => {
       //      console.log(response);
             setJobs(response.data);
         })
@@ -25,7 +27,7 @@ function App() {
                 <h3>Available Job Listings:</h3>
                 <ul>
 
-                    {jobs.map((job: any) => (
+                    {jobs.map(job => (
 
                         <li key={job.id}>
                             {job.title}
