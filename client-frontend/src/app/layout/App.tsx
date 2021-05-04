@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'; //handle http requests and components' state
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import { Joblisting } from '../models/joblisting';
+import NavBar from './NavBar';
+
 
 function App() {
 
@@ -21,8 +24,10 @@ function App() {
 
     // <!--img src={logo} className="App-logo" alt="logo" /--> 
     return (
+
         <div className="App">
             <header className="App-header">
+                <NavBar />
                
                 <h3>Available Job Listings:</h3>
                 <ul>
@@ -44,8 +49,9 @@ function App() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    Learn More and More React
+                        Learn More and More React
         </a>
+                  
             </header>
         </div>
     );

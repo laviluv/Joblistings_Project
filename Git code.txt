@@ -1,6 +1,6 @@
  n:
  
- cd "N:\AF Kompetensutveckling Lexicon\githublavi\Joblistingsfinal"
+ cd "N:\AF Kompetensutveckling Lexicon\githublavi\Joblistingsfinal\client-frontend"
  
  git rm -r *  
  
@@ -17,6 +17,7 @@
 
  
  git add "API" "App" "Domain" "DataLayer" "InsertDataSampleSQLQuery.txt" "Joblistings.postman_collection.json" "client-frontend/" "Git code.txt"
+git add  "client-frontend/src/app/layout/NavBar.tsx" "client-frontend/src/app/layout/bootstrap-5.0.0-beta3-dist/"
  
  git status
  
