@@ -18,16 +18,8 @@ export default function NavBar() {
             <Nav className="mr-auto">
  <Nav.Link href="#about">About</Nav.Link>
             </Nav>
-                <Button variant="outline-info" style={{ marginRight: '7em'}}>Add Joblisting</Button>
-                {/*<Form inline>*/}
-                {/*    <FormControl type="text" placeholder="Search" className="mr-sm-2" />*/}
-                {/*    <Button variant="outline-info">Search</Button>*/}
-                {/*</Form>*/}
-           
+            <Button className="float-right" variant="outline-info" style={{ marginRight: '7em'}}>Add Joblisting</Button>  
         </Navbar>
-
-
-
 
     )
 }

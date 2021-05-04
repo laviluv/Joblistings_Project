@@ -37,7 +37,10 @@ namespace Joblistings
 
             //add the dbcontext to the service startup container
             services.AddDbContext<JobDbContext>(options =>
-              options.UseSqlServer(Configuration.GetConnectionString("JoblistingsDatabase")));
+              options.UseSqlServer(Configuration.GetConnectionString("JoblistingsDatabase"))
+              //, x => x.MigrationsAssembly("DataLayer.Migrations"))
+                );
+          
 
             //separated the additional services added as extensions
             services.AllServices();
