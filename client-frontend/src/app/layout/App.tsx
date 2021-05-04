@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'; //handle http requests and components' state
 import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'font-awesome/css/font-awesome.min.css';
 import './style.css';
 import { Joblisting } from '../models/joblisting';
 import NavBar from './NavBar';
 import JoblistingDashboard from '../../features/joblistings/dashboard/JoblistingDashboard';
 import { ListGroup } from 'react-bootstrap';
+
 
 function App() {
 

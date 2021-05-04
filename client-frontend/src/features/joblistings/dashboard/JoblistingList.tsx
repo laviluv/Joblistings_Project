@@ -19,8 +19,8 @@ export default function JoblistingList({ joblistings}: Props) {
                 <ListGroup.Item action key={joblisting.id} variant="light" >
                     <h5> {joblisting.title} </h5>
                     <p> {joblisting.date} </p>
-                    <p> {joblisting.description} </p>
-                    <Button as="input" variant="outline-dark" size="sm" type="submit" value="View" />{' '}
+                    <p> {joblisting.category} </p>
+                    <Button className="float-right" as="input" variant="outline-dark" size="sm" type="submit" value="View" />{' '}
                 </ListGroup.Item>
 
             ))}
