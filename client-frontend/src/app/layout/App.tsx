@@ -5,7 +5,7 @@ import './style.css';
 import { Joblisting } from '../models/joblisting';
 import NavBar from './NavBar';
 import JoblistingDashboard from '../../features/joblistings/dashboard/JoblistingDashboard';
-
+import { ListGroup } from 'react-bootstrap';
 
 function App() {
 
@@ -31,11 +31,16 @@ function App() {
                 <NavBar />
                 <div className="container-md" >
                     <p style={{marginBottom: '7em'}}></p>
-                <h3>Available Job Listings</h3>
+                    <h3>Available Job Listings</h3>
+                    <div className="col-9">
+                        <ListGroup>
+                        <ListGroup.Item variant="info">
+                                These are the most current joblistings. If you are a match to any of them, happy hunting!
+                             </ListGroup.Item>
+                        </ListGroup>
+                 </div>
                     <JoblistingDashboard joblistings={ joblistings } />
-                    <p>
-                    These are the most current joblistings from our database. Check if you are a match to any of them. Happy hunting!
-        </p>
+                    
                   </div>
             </header>
         </div>

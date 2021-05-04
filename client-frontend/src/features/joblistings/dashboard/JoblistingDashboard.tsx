@@ -1,8 +1,8 @@
 //Dashboard functional component
 
 import React from 'react';
-import { ListGroup } from 'react-bootstrap';
 import { Joblisting } from '../../../app/models/joblisting';
+import JoblistingList from './JoblistingList';
 
 interface Props {
     joblistings: Joblisting[];
@@ -14,14 +14,8 @@ export default function JoblistingDashboard({ joblistings } : Props) {
         <div className="container">
             <div className="row">
                 <div className="col-9">
-                    <ListGroup>
-                        {joblistings.map(joblisting => (
-                            <ListGroup.Item key={joblisting.id}>
-                                {joblisting.title}
-                        </ListGroup.Item>    
 
-                        ))}
-                    </ListGroup>
+                    <JoblistingList joblistings={ joblistings}/>
                 </div>
             </div>
         </div>
