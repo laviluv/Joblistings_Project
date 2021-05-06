@@ -7,5 +7,6 @@
         description: string;
         date: Date;
         category: string;
+        city: string;
     }
 
