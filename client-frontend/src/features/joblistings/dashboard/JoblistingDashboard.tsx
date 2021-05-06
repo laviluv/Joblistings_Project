@@ -4,6 +4,7 @@ import React from 'react';
 import { Joblisting } from '../../../app/models/joblisting';
 import JoblistingDetails from '../details/JoblistingDetails';
 import JoblistingList from './JoblistingList';
+import JoblistingForm from '../form/JoblistingForm';
 
 interface Props {
     joblistings: Joblisting[];
@@ -21,6 +22,7 @@ export default function JoblistingDashboard({ joblistings } : Props) {
                 <div className="col-3">
                     {joblistings[0] &&
                         <JoblistingDetails joblisting={joblistings[0]} />}
+                    <JoblistingForm />
                 </div>
             </div>
         </div>
