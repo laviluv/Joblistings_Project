@@ -15,6 +15,9 @@ function App() {
     //added ts typing Joblisting
     const [joblistings, setJoblistings] = useState<Joblisting[]>([]);
 
+    //state for selected joblisting
+    const [selectedJoblisting, setSelectedJoblisting] = useState<Joblisting|undefined>(undefined);
+
     //getting the state of jobs through the http request resonse data (jobs)
     //added ts for typing Joblisting
     useEffect(() => {
@@ -23,6 +26,17 @@ function App() {
             setJoblistings(response.data);
         })
     }, [])
+
+    //function for handling the selected joblisting
+    function handleSelectJoblisting(id: string) {
+        setSelectedJoblisting(joblistings.find(x => x.id === id));
+    }
+
+    //function for cancelingSelectedJoblisting
+    function handleCancelSelectedJoblisting() {
+        setSelectedJoblisting(undefined);
+    }
+
 
 
     // <!--img src={logo} className="App-logo" alt="logo" /--> 
@@ -41,7 +55,12 @@ function App() {
                              </ListGroup.Item>
                         </ListGroup>
                  </div>
-                    <JoblistingDashboard joblistings={ joblistings } />
+                    <JoblistingDashboard
+                        joblistings={joblistings}
+                        selectedJoblisting={selectedJoblisting}
+                        setSelectJoblisting={handleSelectJoblisting}
+                        cancelSelectJoblisting = {handleCancelSelectedJoblisting}
+                    />
                     
                   </div>
             </header>

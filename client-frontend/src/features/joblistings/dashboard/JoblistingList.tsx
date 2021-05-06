@@ -8,10 +8,11 @@ import { ListGroup, Button } from 'react-bootstrap';
 
 interface Props {
     joblistings: Joblisting[];
+    selectJoblisting: (id: string) => void;
 }
 
 //destructure the joblistings
-export default function JoblistingList({ joblistings}: Props) {
+export default function JoblistingList({ joblistings, selectJoblisting }: Props) {
 
     return (
         <ListGroup>
@@ -20,7 +21,8 @@ export default function JoblistingList({ joblistings}: Props) {
                     <h5> {joblisting.title} </h5>
                     <p> {joblisting.date} </p>
                     <p> {joblisting.category} </p>
-                    <Button className="float-right" as="input" variant="outline-dark" size="sm" type="submit" value="View" />{' '}
+                    <Button className="float-right" as="input" onClick={() => selectJoblisting(joblisting.id)} variant="outline-dark"
+                        size="sm" type="submit" value="View" />{' '}
                 </ListGroup.Item>
 
             ))}

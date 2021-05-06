@@ -8,10 +8,11 @@ import { Joblisting } from '../../../app/models/joblisting';
 
 interface Props {
     joblisting: Joblisting;
+    cancelSelectJoblisting: () => void;
 }
 
 //destructure the joblistings
-export default function JoblistingDetails({ joblisting }: Props) {
+export default function JoblistingDetails({ joblisting, cancelSelectJoblisting }: Props) {
 
     return (
 
@@ -26,7 +27,7 @@ export default function JoblistingDetails({ joblisting }: Props) {
                 </Card.Text>
                 <ButtonGroup>
                 <Button className="float-right" as="input" variant="outline-success" size="sm" type="submit" value="Edit" />{' '}
-                <Button className="float-right" as="input" variant="outline-secondary" size="sm" type="submit" value="Cancel" />{' '}
+                    <Button className="float-right" as="input" onClick={cancelSelectJoblisting} variant="outline-secondary" size="sm" type="submit" value="Cancel" />{' '}
                 </ButtonGroup>
 
           </Card.Body>
