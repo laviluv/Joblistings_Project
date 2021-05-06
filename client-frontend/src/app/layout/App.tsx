@@ -16,7 +16,10 @@ function App() {
     const [joblistings, setJoblistings] = useState<Joblisting[]>([]);
 
     //state for selected joblisting
-    const [selectedJoblisting, setSelectedJoblisting] = useState<Joblisting|undefined>(undefined);
+    const [selectedJoblisting, setSelectedJoblisting] = useState<Joblisting | undefined>(undefined);
+
+    //setting the edit state
+    const [editMode, setEditMode] = useState(false);
 
     //getting the state of jobs through the http request resonse data (jobs)
     //added ts for typing Joblisting
@@ -37,14 +40,21 @@ function App() {
         setSelectedJoblisting(undefined);
     }
 
+    function handleFormOpen(id?: string) {
+        id ? handleSelectJoblisting(id) : handleCancelSelectedJoblisting();
+        setEditMode(true);
+    }
 
+    function handleFormClose() {
+        setEditMode(false);
+    }
 
     // <!--img src={logo} className="App-logo" alt="logo" /--> 
     return (
 
         <div className="App">
             <header className="App-header">
-                <NavBar />
+                <NavBar openForm={handleFormOpen} />
                 <div className="container-md" >
                     <p style={{marginBottom: '7em'}}></p>
                     <h3>Available Job Listings</h3>
@@ -59,7 +69,10 @@ function App() {
                         joblistings={joblistings}
                         selectedJoblisting={selectedJoblisting}
                         selectJoblisting={handleSelectJoblisting}
-                        cancelSelectJoblisting = {handleCancelSelectedJoblisting}
+                        cancelSelectJoblisting={handleCancelSelectedJoblisting}
+                        editMode={editMode}
+                        openForm={handleFormOpen}
+                        closeForm={handleFormClose}
                     />
                     
                   </div>

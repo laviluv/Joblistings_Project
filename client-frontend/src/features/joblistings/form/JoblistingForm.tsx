@@ -2,8 +2,17 @@
 
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { Joblisting } from '../../../app/models/joblisting';
 
-export default function JoblistingForm() {
+
+interface Props {
+    joblisting: Joblisting | undefined;
+    closeForm: () => void;
+}
+
+
+//destructure the joblisting props
+export default function JoblistingForm({ joblisting, closeForm }: Props) {
     return (
     <Form>
         <Form.Group controlId="formTitle">

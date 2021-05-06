@@ -11,10 +11,15 @@ interface Props {
     selectedJoblisting: Joblisting | undefined;
     selectJoblisting: (id: string) => void;
     cancelSelectJoblisting: () => void;
+    editMode: boolean;
+    openForm: (id: string) => void;
+    closeForm: () => void;
+
 }
 
 //destructure the joblisting to get access to the props
-export default function JoblistingDashboard({ joblistings, selectedJoblisting, selectJoblisting, cancelSelectJoblisting } : Props) {
+export default function JoblistingDashboard({ joblistings, selectedJoblisting, selectJoblisting, cancelSelectJoblisting,
+    editMode, openForm, closeForm }: Props) {
     return (
         <div className="container">
             <div className="row">
@@ -27,8 +32,12 @@ export default function JoblistingDashboard({ joblistings, selectedJoblisting, s
                 </div>
                 <div className="col-3">
                     {selectedJoblisting &&
-                        <JoblistingDetails joblisting={selectedJoblisting} cancelSelectJoblisting={cancelSelectJoblisting }/>}
-                    <JoblistingForm />
+                        <JoblistingDetails
+                        joblisting={selectedJoblisting}
+                        cancelSelectJoblisting={cancelSelectJoblisting}
+                        openForm={openForm} />}
+                    {editMode &&
+                    <JoblistingForm closeForm={closeForm} joblisting={selectedJoblisting} />}
                 </div>
             </div>
         </div>

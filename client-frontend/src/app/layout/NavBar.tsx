@@ -3,7 +3,11 @@
 import React from 'react';
 import { Nav, Navbar, Button, Container, Form, FormControl } from 'react-bootstrap';
 
-export default function NavBar() {
+interface Props {
+    openForm: () => void;
+}
+
+export default function NavBar({ openForm }: Props) {
     return (
 
         <Navbar bg="dark" variant="dark" fixed="top">
@@ -18,7 +22,7 @@ export default function NavBar() {
             <Nav className="mr-auto">
  <Nav.Link href="#about">About</Nav.Link>
             </Nav>
-            <Button className="float-right" variant="outline-info" style={{ marginRight: '7em'}}>Add Joblisting</Button>  
+            <Button className="float-right" onClick={ openForm } variant="outline-info" style={{ marginRight: '7em'}}>Add Joblisting</Button>  
         </Navbar>
 
     )
