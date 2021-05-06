@@ -27,7 +27,7 @@ function App() {
         })
     }, [])
 
-    //function for handling the selected joblisting
+    //function for handling the selection of a joblisting
     function handleSelectJoblisting(id: string) {
         setSelectedJoblisting(joblistings.find(x => x.id === id));
     }
@@ -58,7 +58,7 @@ function App() {
                     <JoblistingDashboard
                         joblistings={joblistings}
                         selectedJoblisting={selectedJoblisting}
-                        setSelectJoblisting={handleSelectJoblisting}
+                        selectJoblisting={handleSelectJoblisting}
                         cancelSelectJoblisting = {handleCancelSelectedJoblisting}
                     />
                     
