@@ -25,9 +25,9 @@ function App() {
     //getting the state of jobs through the http request resonse data (jobs)
     //added ts for typing Joblisting
     useEffect(() => {
-        axios.get<Joblisting[]>("https://localhost:44358/api/joblistings").then(response => {
+        agent.Joblistings.list().then(response => {
       //      console.log(response);
-            setJoblistings(response.data);
+            setJoblistings(response);
         })
     }, [])
 

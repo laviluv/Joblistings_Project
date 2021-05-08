@@ -41,7 +41,10 @@ export default function JoblistingDashboard({ joblistings, selectedJoblisting, s
                         cancelSelectJoblisting={cancelSelectJoblisting}
                         openForm={openForm} />}
                     {editMode &&
-                        <JoblistingForm closeForm={closeForm} joblisting={selectedJoblisting} createOrEdit={createOrEdit} />}
+                        <JoblistingForm 
+                            closeForm={closeForm} 
+                            joblisting={selectedJoblisting}
+                            createOrEdit={createOrEdit} />}
                 </div>
             </div>
         </div>
