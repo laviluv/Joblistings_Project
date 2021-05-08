@@ -1,18 +1,21 @@
-﻿INSERT INTO [Joblistings].[dbo].[Joblistings] (Id, Title, Description, Date, Category) VALUES
+﻿INSERT INTO [Joblistings].[dbo].[Joblistings] (Id, Title, Description, Date, Category, City) VALUES
   (newid(), 'Job1',
    'Job1description',
    GETUTCDATE(),
-   'This is a test account to model this data.');
+   'This is a test account to model this data.',
+   'Malmo');
 
-   INSERT INTO [Joblistings].[dbo].[Joblistings] (Id, Title, Description, Date, Category) VALUES
+   INSERT INTO [Joblistings].[dbo].[Joblistings] (Id, Title, Description, Date, Category, City) VALUES
   (newid(), 'Job2',
    'Job2description',
    GETUTCDATE(),
-   'This is a test account to model this data.');
+   'This is a test account to model this data.',
+   'Malmo');
 
 
-   INSERT INTO [Joblistings].[dbo].[Joblistings] (Id, Title, Description, Date, Category) VALUES
+   INSERT INTO [Joblistings].[dbo].[Joblistings] (Id, Title, Description, Date, Category, City) VALUES
   (newid(), 'Job3',
    'Job3description',
    GETUTCDATE(),
-   'This is a test account to model this data.');
+   'This is a test account to model this data.',
+   'Malmo');

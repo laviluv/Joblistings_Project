@@ -23,7 +23,8 @@ export default function JoblistingDetails({ joblisting, cancelSelectJoblisting, 
                     <i className="bi bi-info-circle-fill"></i>
                     {joblisting.title}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">{joblisting.date}  ({joblisting.category})</Card.Subtitle>
-            <Card.Text>
+                <Card.Text>
+                    {joblisting.city} -
                         {joblisting.description} 
                 </Card.Text>
                 <ButtonGroup>

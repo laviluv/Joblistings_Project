@@ -49,6 +49,15 @@ function App() {
         setEditMode(false);
     }
 
+    function handleCreateOrEditJoblisting(joblisting: Joblisting) {
+        //check if joblisting is created or existing getting edited
+        joblisting.id ? setJoblistings([...joblistings.filter(x => x.id !== joblisting.id, joblisting)])
+            //in case it doesn't exist
+            : setJoblistings([...joblistings, joblisting]);
+        setEditMode(false);
+        setSelectedJoblisting(joblisting);
+    }
+
     // <!--img src={logo} className="App-logo" alt="logo" /--> 
     return (
 
@@ -73,6 +82,7 @@ function App() {
                         editMode={editMode}
                         openForm={handleFormOpen}
                         closeForm={handleFormClose}
+                        createOrEdit={handleCreateOrEditJoblisting}
                     />
                     
                   </div>
