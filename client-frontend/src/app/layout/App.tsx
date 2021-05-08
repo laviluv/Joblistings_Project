@@ -72,6 +72,10 @@ function App() {
                 setSelectedJoblisting(joblisting);
                 setEditMode(false);
                 setSubmitting(false);
+                console.log(joblisting);
+                
+                    setTimeout('565000');
+               
             })
         } else {
             joblisting.id = uuid();

@@ -21,9 +21,9 @@ export default function JoblistingForm({ joblisting: selectedJoblisting, closeFo
     const initialState = selectedJoblisting ?? {
         id: '',
         title: '',
-        category: '',
         description: '',
         date: '',
+        category: '',
         city: ''
     }
 
@@ -43,7 +43,12 @@ export default function JoblistingForm({ joblisting: selectedJoblisting, closeFo
 
 
     return (
-        <Form onSubmit={handleSubmit}  autoComplete='off'>
+        <Form onSubmit={handleSubmit} autoComplete='off'>
+
+            <Form.Group controlId="formId">
+                <Form.Label>ID</Form.Label>
+                <Form.Control type="text" className="form-control" placeholder="Id" value={joblisting.id} name="id" onChange={handleInputChange} />
+            </Form.Group>
 
                 <Form.Group controlId="formTitle">
                     <Form.Label>Title</Form.Label>
@@ -59,16 +64,15 @@ export default function JoblistingForm({ joblisting: selectedJoblisting, closeFo
                     <Form.Control type="date" className="form-control" placeholder="Date" value={joblisting.date} name="date" onChange={handleInputChange} />
                 </Form.Group>
 
-                <Form.Group controlId="formCity">
-                    <Form.Label>City</Form.Label>
-                    <Form.Control type="text" className="form-control" placeholder="City" value={joblisting.city} name="city" onChange={handleInputChange} />
-                </Form.Group>
-
             <Form.Group controlId="formCategory">
                 <Form.Label>Category</Form.Label>
                 <Form.Control type="text" className="form-control" placeholder="Category" value={joblisting.category} name="category" onChange={handleInputChange} />
             </Form.Group>
 
+            <Form.Group controlId="formCity">
+                <Form.Label>City</Form.Label>
+                <Form.Control type="text" className="form-control" placeholder="City" value={joblisting.city} name="city" onChange={handleInputChange} />
+            </Form.Group>
 
             <Button variant="outline-success" type="submit">Submit</Button>
             <Button onClick={closeForm} variant="outline-secondary" type="submit">Cancel</Button>
