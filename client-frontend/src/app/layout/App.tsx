@@ -59,6 +59,11 @@ function App() {
         setSelectedJoblisting(joblisting);
     }
 
+    function handleDeleteJoblisting(id: string) {
+        setJoblistings([...joblistings.filter(x => x.id !== id)])
+    }
+
+
     // <!--img src={logo} className="App-logo" alt="logo" /--> 
     return (
 
@@ -84,6 +89,7 @@ function App() {
                         openForm={handleFormOpen}
                         closeForm={handleFormClose}
                         createOrEdit={handleCreateOrEditJoblisting}
+                        deleteJoblisting={handleDeleteJoblisting}
                     />
                     
                   </div>
