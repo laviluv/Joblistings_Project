@@ -21,54 +21,45 @@ const Joblistings = {
     list: () => requests.get<Joblisting[]>('/joblistings'),
     details: (id: string) => requests.get<Joblisting>('/joblistings/${id}'),
     create: (joblisting: Joblisting) => axios.post<void>('/joblistings', joblisting),
-    update: (joblisting: Joblisting) => axios.put<void>('/joblistings/${joblisting.id}', joblisting),
+    update: (joblisting: Joblisting) => axios.put<void>('/joblistings/${id}', joblisting),
     delete: (id: string) => axios.delete<void>('/joblistings/${id}')
-
-
-
-    //axios.post('url', { "body": data }, {
-    //    headers: {
-    //       'Content-Type': 'application/json'
-    //    }
-    //}
-    //)
 }
 
-let data = {
-    "title": "TESTREACTAXIOS!!!",
-    "date": "05-08-2020",
-    "description": "Description of the API added joblisting",
-    "category": "Test through API",
-    "city": "Testcity"
-    }
+//let data = {
+//    "title": "TESTREACTAXIOS!!!",
+//    "date": "05-08-2020",
+//    "description": "Description of the API added joblisting",
+//    "category": "Test through API",
+//    "city": "Testcity"
+//    }
 
-axios.post('https://localhost:44358/api/Joblistings/', { "body": data
-    })
-    .then(response => {
-        console.log('Response', response.data)
-    })
-    .catch(e => {
-        console.log('Error: ', e.response.data)
-    })
-
-
-axios.put('https://localhost:44358/api/Joblistings/CE0D5773-A4C9-4922-92EC-1376F655CD35', {
-    "body": data})
-    .then(response => {
-        console.log('Response', response.data)
-    })
-    .catch(e => {
-        console.log('Error: ', e.response.data)
-    })
+//axios.post('https://localhost:44358/api/Joblistings/', { "body": data
+//    })
+//    .then(response => {
+//        console.log('Response', response.data)
+//    })
+//    .catch(e => {
+//        console.log('Error: ', e.response.data)
+//    })
 
 
-axios.delete('https://localhost:44358/api/Joblistings/3363A6C7-9C11-484C-8D3C-454F15E5C716')
-    .then(response => {
-        console.log('Response', response.data)
-    })
-    .catch(e => {
-        console.log('Error: ', e.response.data)
-    })
+//axios.put('https://localhost:44358/api/Joblistings/CE0D5773-A4C9-4922-92EC-1376F655CD35', {
+//    "body": data})
+//    .then(response => {
+//        console.log('Response', response.data)
+//    })
+//    .catch(e => {
+//        console.log('Error: ', e.response.data)
+//    })
+
+
+//axios.delete('https://localhost:44358/api/Joblistings/3363A6C7-9C11-484C-8D3C-454F15E5C716')
+//    .then(response => {
+//        console.log('Response', response.data)
+//    })
+//    .catch(e => {
+//        console.log('Error: ', e.response.data)
+//    })
 
 const agent = { Joblistings };
 
