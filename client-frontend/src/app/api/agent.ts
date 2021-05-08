@@ -21,7 +21,7 @@ const Joblistings = {
     list: () => requests.get<Joblisting[]>('/joblistings'),
     details: (id: string) => requests.get<Joblisting>('/joblistings/${id}'),
     create: (joblisting: Joblisting) => axios.post<void>('/joblistings', joblisting),
-    update: (joblisting: Joblisting) => axios.put<void>('/joblistings/${id}', joblisting),
+    update: (joblisting: Joblisting) => axios.put<void>('/joblistings/${joblisting.id}', joblisting),
     delete: (id: string) => axios.delete<void>('/joblistings/${id}')
 }
 
