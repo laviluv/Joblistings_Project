@@ -9,11 +9,12 @@ interface Props {
     joblisting: Joblisting | undefined;
     closeForm: () => void;
     createOrEdit: (joblisting: Joblisting) => void;
+    submitting: boolean;
 }
 
 
 //destructure the joblisting props
-export default function JoblistingForm({ joblisting: selectedJoblisting, closeForm, createOrEdit }: Props) {
+export default function JoblistingForm({ joblisting: selectedJoblisting, closeForm, createOrEdit, submitting }: Props) {
 
 
     //populate initial state and store within component state with the help of useState hook
@@ -29,47 +30,48 @@ export default function JoblistingForm({ joblisting: selectedJoblisting, closeFo
     const [joblisting, setJoblisting] = useState(initialState);
 
     function handleSubmit() {
-      //  console.log(joblisting);
+        console.log(joblisting);
         createOrEdit(joblisting);
     }
 
     function handleInputChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-        event.preventDefault();
+         event.preventDefault();
         const { name, value } = event.target;
         setJoblisting({ ...joblisting, [name]: value });
-        
        
     }
 
 
     return (
-        <Form onSubmit={handleSubmit} autoComplete='off'>
+        <Form  autoComplete='off'>
 
-            <Form.Group role="formTitle">
-            <Form.Label>Title</Form.Label>
+                <Form.Group controlId="formTitle">
+                    <Form.Label>Title</Form.Label>
                 <Form.Control type="text" className="form-control" placeholder="Title" value={joblisting.title} name="title" onChange={handleInputChange} />
-      </Form.Group>
+                </Form.Group>
+                <Form.Group controlId="formDescription">
+                    <Form.Label>Description</Form.Label>
+                <Form.Control type="textarea" className="form-control" placeholder="Description" value={joblisting.description} name="description" onChange={handleInputChange} />
+                </Form.Group>
 
-            <Form.Group role="formDescription">
-            <Form.Label>Description</Form.Label>
-                <Form.Control type="textarea" className="form-control" placeholder="Description" value={joblisting.description} name="title" onChange={handleInputChange}/>
-         </Form.Group>
+                <Form.Group controlId="formDate">
+                    <Form.Label>Date</Form.Label>
+                    <Form.Control type="date" className="form-control" placeholder="Date" value={joblisting.date} name="date" onChange={handleInputChange} />
+                </Form.Group>
 
-            <Form.Group role="formDate">
-                <Form.Label>Date</Form.Label>
-                <Form.Control type="text" className="form-control" placeholder="Date" value={joblisting.date} name="title" onChange={handleInputChange} />
-                 </Form.Group>
+                <Form.Group controlId="formCity">
+                    <Form.Label>City</Form.Label>
+                    <Form.Control type="text" className="form-control" placeholder="City" value={joblisting.city} name="city" onChange={handleInputChange} />
+                </Form.Group>
 
-            <Form.Group role="formCity">
+            <Form.Group controlId="formCategory">
                 <Form.Label>City</Form.Label>
-                <Form.Control type="text" className="form-control" placeholder="City" value={joblisting.city} name="title" onChange={handleInputChange} />
-
-               
-
+                <Form.Control type="text" className="form-control" placeholder="Category" value={joblisting.category} name="category" onChange={handleInputChange} />
             </Form.Group>
-            <Button variant="outline-success" className="submitButton" type="submit">Submit</Button>
-            <Button variant="outline-secondary" type="submit">Cancel</Button>
-         
+
+
+            <Button onSubmit={handleSubmit} variant="outline-success" type="submit">Submit</Button>
+            <Button onClick={closeForm} variant="outline-secondary" type="submit">Cancel</Button>
     </Form>
         )
 }

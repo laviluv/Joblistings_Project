@@ -10,10 +10,11 @@ interface Props {
     joblistings: Joblisting[];
     selectJoblisting: (id: string) => void;
     deleteJoblisting: (id: string) => void;
+    submitting: boolean;
 }
 
 //destructure the joblistings
-export default function JoblistingList({ joblistings, selectJoblisting, deleteJoblisting }: Props) {
+export default function JoblistingList({ joblistings, selectJoblisting, deleteJoblisting, submitting }: Props) {
 
     return (
         <ListGroup>
