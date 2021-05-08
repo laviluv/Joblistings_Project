@@ -5,7 +5,7 @@
         id: string;
         title: string;
         description: string;
-        date: Date;
+        date: string;
         category: string;
         city: string;
     }

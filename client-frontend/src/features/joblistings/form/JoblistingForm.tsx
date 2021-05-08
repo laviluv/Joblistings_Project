@@ -29,7 +29,7 @@ export default function JoblistingForm({ joblisting: selectedJoblisting, closeFo
     const [joblisting, setJoblisting] = useState(initialState);
 
     function handleSubmit() {
-        //console.log(joblisting);
+        console.log(joblisting);
         createOrEdit(joblisting);
     }
 
