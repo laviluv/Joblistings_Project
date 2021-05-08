@@ -1,7 +1,7 @@
 //Navbar Functional Component (function that returns jsx)
 
 import React from 'react';
-import { Nav, Navbar, Button, Container, Form, FormControl } from 'react-bootstrap';
+import { Nav, Navbar, Button } from 'react-bootstrap';
 
 interface Props {
     openForm: () => void;

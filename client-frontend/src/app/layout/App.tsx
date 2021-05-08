@@ -7,6 +7,7 @@ import { Joblisting } from '../models/joblisting';
 import NavBar from './NavBar';
 import JoblistingDashboard from '../../features/joblistings/dashboard/JoblistingDashboard';
 import { ListGroup } from 'react-bootstrap';
+import { v4 as uuid } from 'uuid';
 
 
 function App() {
@@ -53,7 +54,7 @@ function App() {
         //check if joblisting is created or existing getting edited
         joblisting.id ? setJoblistings([...joblistings.filter(x => x.id !== joblisting.id, joblisting)])
             //in case it doesn't exist
-            : setJoblistings([...joblistings, joblisting]);
+            : setJoblistings([...joblistings, { ...joblisting, id: uuid()}]);
         setEditMode(false);
         setSelectedJoblisting(joblisting);
     }
