@@ -68,22 +68,31 @@ function App() {
         if (joblisting.id) {
             agent.Joblistings.update(joblisting).then(() => {
                 //check if joblisting is created or existing getting edited
-                setJoblistings([...joblistings.filter(x => x.id !== joblisting.id, joblisting)]);
+                joblisting.id ? setJoblistings([...joblistings.filter(x => x.id !== joblisting.id, joblisting)]) : console.log("NOT SET");
                 setSelectedJoblisting(joblisting);
                 setEditMode(false);
                 setSubmitting(false);
                 console.log(joblisting);
                 
-                    setTimeout('565000');
+                 //setTimeout(565000);
+
+                setTimeout(() => {
+                    console.log('hello');
+                }, 10000);
                
             })
         } else {
+            //create joblisting
             joblisting.id = uuid();
             agent.Joblistings.create(joblisting).then(() => {
                 setJoblistings([...joblistings, joblisting]);
                 setSelectedJoblisting(joblisting);
                 setEditMode(false);
                 setSubmitting(false);
+
+                setTimeout(() => {
+                    console.log('hello');
+                }, 10000);
             })
         }
         //check if joblisting is created or existing getting edited

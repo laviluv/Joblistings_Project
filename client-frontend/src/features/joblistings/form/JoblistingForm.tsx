@@ -32,6 +32,10 @@ export default function JoblistingForm({ joblisting: selectedJoblisting, closeFo
     function handleSubmit() {
         console.log(joblisting);
         createOrEdit(joblisting);
+
+
+
+
     }
 
     function handleInputChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -45,10 +49,10 @@ export default function JoblistingForm({ joblisting: selectedJoblisting, closeFo
     return (
         <Form onSubmit={handleSubmit} autoComplete='off'>
 
-            <Form.Group controlId="formId">
-                <Form.Label>ID</Form.Label>
-                <Form.Control type="text" className="form-control" placeholder="Id" value={joblisting.id} name="id" onChange={handleInputChange} />
-            </Form.Group>
+            {/*<Form.Group controlId="formId">*/}
+            {/*    <Form.Label>ID</Form.Label>*/}
+            {/*    <Form.Control type="text" className="form-control" placeholder="Id" value={joblisting.id} name="id" onChange={handleInputChange} />*/}
+            {/*</Form.Group>*/}
 
                 <Form.Group controlId="formTitle">
                     <Form.Label>Title</Form.Label>

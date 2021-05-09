@@ -3,7 +3,8 @@ import { Joblisting } from '../models/joblisting';
 
 axios.defaults.baseURL = 'https://localhost:44358/api';
 axios.defaults.headers = {
-    'Content-Type': 'application/json',
+   'Content-Type': 'application/json',
+  //  'Content-Type': 'text/plain',
     'Accept': '*/*' 
 }
 
@@ -14,6 +15,7 @@ const requests = {
     get: <T> (url: string) => axios.get<T>(url).then(responseBody),
     post: <T>(url: string, body: {}) => axios.post<T>(url, body).then(responseBody),
 
+  
     put: <T>(url: string, body: {}) => axios.put<T>(url, body).then(responseBody => {
         console.log('Response', responseBody.data)
     })
@@ -27,24 +29,87 @@ delete: <T>(url: string) => axios.delete<T>(url).then(responseBody => {
     .catch(e => {
         console.log('Error: ', e.responseBody.data)
     })
-   
+
 }
+
+
+
+        
+
 
 const Joblistings = {
     list: () => requests.get<Joblisting[]>('/joblistings'),
     details: (id: string) => requests.get<Joblisting>('/joblistings/${id}'),
     create: (joblisting: Joblisting) => axios.post<void>('/joblistings', joblisting),
-    update: (joblisting: Joblisting) => axios.put<void>('/joblistings/${joblisting.id}', joblisting),
+   // update: (joblisting: Joblisting) => axios.put<void>('/joblistings/${joblisting.id}', joblisting),
+   // delete: (id: string) => axios.delete<void>('/joblistings/?id=${id}')
+   // update: (joblisting: Joblisting) => axios.put<void>('/joblistings/${joblisting.id}', { params: joblisting }),
+
+    update: (joblisting: Joblisting) => axios.put('/joblistings/${joblisting.id}', joblisting)
+        .catch(function (error) {
+
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+            } else if (error.request) {
+                // The request was made but no response was received
+                // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                // http.ClientRequest in node.js
+                console.log(error.request);
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                console.log('Error', error.message);
+            }
+            console.log(error.config);
+
+        }),
+
+
+
+
+        //.catch(function (error) {
+        //    if (error.response) {
+        //        // The request was made and the server responded with a status code
+        //        // that falls out of the range of 2xx
+        //        console.log(error.response.data);
+        //        console.log(error.response.status);
+        //        console.log(error.response.headers);
+        //    } else if (error.request) {
+        //        // The request was made but no response was received
+        //        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+        //        // http.ClientRequest in node.js
+        //        console.log(error.request);
+        //    } else {
+        //        // Something happened in setting up the request that triggered an Error
+        //        console.log('Error', error.message);
+        //    }
+        //    console.log(error.config);
+        //}),
+
+
     delete: (id: string) => axios.delete<void>('/joblistings/${id}')
+
+  
+     
+
+
+    
+
+    //const params = {
+    //    articleNumber: this.articleNumber,
+    //};
+
+    //const response = await axios.$get('/api/slider?mode=bestseller', { params });
+
+      //axios.get('api?&foo=bar') || axios.get(api?&${param}=${value})
+
+    //axios.put(url?&${id}=${id})
+    //?id=fc244e0d-80d6-4ef7-a6cc-2d094e7b6007&title=testingthis&description=asdAdAcytcy&date=2021-04-26&category=AADAdccy&city=ADdDdcytcy
 }
 
-//let data = {
-//    "title": "TESTREACTAXIOS!!!",
-//    "date": "05-08-2020",
-//   "description": "Description of the API added joblisting",
-//    "category": "Test through API",
-//    "city": "Testcity"
-//    }
 
 //axios.post('https://localhost:44358/api/Joblistings/', { "body": data
 //    })
@@ -56,14 +121,6 @@ const Joblistings = {
 //    })
 
 
-//axios.put('https://localhost:44358/api/Joblistings/CE0D5773-A4C9-4922-92EC-1376F655CD35', {
-//    "body": data})
-//   .then(response => {
-//        console.log('Response', response.data)
-//    })
-//    .catch(e => {
-//        console.log('Error: ', e.response.data)
-//    })
 
 
 //axios.delete('https://localhost:44358/api/Joblistings/3363A6C7-9C11-484C-8D3C-454F15E5C716')
@@ -74,6 +131,135 @@ const Joblistings = {
 //        console.log('Error: ', e.response.data)
 //    })
 
+
+function delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+(async () => {
+    // Do something before delay
+    console.log('before delay-------------------------------------------------------------------');
+
+
+    //let data = {
+    //    title: 'TESTREACTAXIOS!!!',
+    //    date: '05-08-2020',
+    //    description: 'Description of the API added joblisting',
+    //    category: 'Test through API',
+    //    city: 'Testcity'
+    //}
+
+
+
+    //axios.post('https://api.com/v1/resource',
+    //    {
+    //        title: 'TESTREACTAXIOS!!!',
+    //        date: '05-08-2020',
+    //        description: 'Description of the API added joblisting',
+    //        category: 'Test through API',
+    //        city: 'Testcity'
+    //    },
+    //    {
+    //        // Config
+    //    }
+    //);
+
+
+    axios.put('https://localhost:44358/api/Joblistings/9E001D0E-B6B8-4403-19E7-08D9123991EF', 
+        //data
+        {
+            id: '9E001D0E-B6B8-4403-19E7-08D9123991EF',
+            title: 'TESTREACTAXIOS!!!',
+            date: '05-08-2020',
+            description: 'Description of the API added joblisting',
+            category: 'Test through API',
+            city: 'Testcity'
+        },
+
+    )
+        .then(response => {
+            console.log('Response', response.data)
+        })
+        .catch(error => {
+            console.log('Error: ', error.response.data);
+
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+
+
+            } else if (error.request) {
+                // The request was made but no response was received
+                // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                // http.ClientRequest in node.js
+                console.log(error.request);
+
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                console.log('Error', error.message)
+            }
+
+        })
+
+
+    await delay(20000);
+
+    // Do something after
+    console.log('after delay NO 1  **************************************************************************');
+
+
+
+  
+
+    axios.delete('https://localhost:44358/api/Joblistings/01FCFD55-3E71-45EE-19E9-08D9123991EF'
+    )
+        .then(response => {
+            console.log('Response', response.data)
+        })
+        .catch(error => {
+            console.log('Error: ', error.response.data);
+
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+
+
+            } else if (error.request) {
+                // The request was made but no response was received
+                // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                // http.ClientRequest in node.js
+                console.log(error.request);
+
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                console.log('Error', error.message)
+            }
+
+        })
+
+
+    await delay(20000);
+
+    // Do something after
+    console.log('after delay NO 2  **************************************************************************');
+
+
+
+
+
+})();
+
+
+
+
 const agent = { Joblistings };
 
 export default agent;
+
+
