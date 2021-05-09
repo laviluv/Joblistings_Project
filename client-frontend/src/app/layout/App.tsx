@@ -9,7 +9,7 @@ import JoblistingDashboard from '../../features/joblistings/dashboard/Joblisting
 import { ListGroup } from 'react-bootstrap';
 import { v4 as uuid } from 'uuid';
 import agent from '../api/agent';
-import LoadingComponent from './LoadingComponents';
+//import LoadingComponent from './LoadingComponents';
 
 
 function App() {
@@ -107,7 +107,7 @@ function App() {
         
     }
 
-    if (loading) return <LoadingComponent content='Loading...' />
+    // if (loading) return <LoadingComponent content='Loading...' />
 
     // <!--img src={logo} className="App-logo" alt="logo" /--> 
     return (
@@ -119,6 +119,7 @@ function App() {
                     <p style={{marginBottom: '7em'}}></p>
                     <h3>Available Job Listings</h3>
                     <div className="col-9">
+
                         <ListGroup>
                         <ListGroup.Item variant="info">
                                 These are the most current joblistings. If you are a match to any of them, happy hunting!

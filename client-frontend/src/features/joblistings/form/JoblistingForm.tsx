@@ -75,16 +75,16 @@ export default function JoblistingForm({ joblisting: selectedJoblisting, closeFo
             </Form.Group>
 
             <Button variant="outline-success" type="submit">Submit
-            if(submitting){
+            {/*if(submitting){*/}
 
-                    <Spinner
-                        as="span"
-                        animation="border"
-                        size="sm"
-                        role="status"
-                        aria-hidden="true"
-                    />
-                }
+            {/*        <Spinner*/}
+            {/*            as="span"*/}
+            {/*            animation="border"*/}
+            {/*            size="sm"*/}
+            {/*            role="status"*/}
+            {/*            aria-hidden="true"*/}
+            {/*        />*/}
+            {/*    }*/}
                  </Button>
            
 <Button onClick={closeForm} variant="outline-secondary" type="submit">Cancel</Button>
