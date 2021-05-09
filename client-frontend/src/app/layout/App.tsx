@@ -74,11 +74,7 @@ function App() {
                 setSubmitting(false);
                 console.log(joblisting);
                 
-                 //setTimeout(565000);
-
-                setTimeout(() => {
-                    console.log('hello');
-                }, 10000);
+             
                
             })
         } else {
@@ -90,9 +86,6 @@ function App() {
                 setEditMode(false);
                 setSubmitting(false);
 
-                setTimeout(() => {
-                    console.log('hello');
-                }, 10000);
             })
         }
         //check if joblisting is created or existing getting edited
