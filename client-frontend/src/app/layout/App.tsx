@@ -9,6 +9,7 @@ import JoblistingDashboard from '../../features/joblistings/dashboard/Joblisting
 import { ListGroup } from 'react-bootstrap';
 import { v4 as uuid } from 'uuid';
 import agent from '../api/agent';
+import LoadingComponent from './LoadingComponents';
 
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
     //setting the edit state
     const [editMode, setEditMode] = useState(false);
 
+    //setting the loader
+    const [loading, setLoading] = useState(true);
+
     //check if submitting
     const [submitting, setSubmitting] = useState(false);
 
@@ -31,14 +35,15 @@ function App() {
     useEffect(() => {
         agent.Joblistings.list().then(response => {
       //      console.log(response);
+
             //quickfixing the date 
             let joblistings: Joblisting[] = [];
             response.forEach(joblisting => {
                 joblisting.date = joblisting.date.split('T')[0];
                 joblistings.push(joblisting);
             })
-
             setJoblistings(joblistings);
+            setLoading(false);
         })
     }, [])
 
@@ -73,9 +78,6 @@ function App() {
                 setEditMode(false);
                 setSubmitting(false);
                 console.log(joblisting);
-                
-             
-               
             })
         } else {
             //create joblisting
@@ -105,6 +107,7 @@ function App() {
         
     }
 
+    if (loading) return <LoadingComponent content='Loading...' />
 
     // <!--img src={logo} className="App-logo" alt="logo" /--> 
     return (

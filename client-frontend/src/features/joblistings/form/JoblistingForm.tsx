@@ -1,7 +1,7 @@
 //Functional component Form for editing and add joblistings
 
 import React, { ChangeEvent, useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Spinner } from 'react-bootstrap';
 import { Joblisting } from '../../../app/models/joblisting';
 
 
@@ -32,10 +32,6 @@ export default function JoblistingForm({ joblisting: selectedJoblisting, closeFo
     function handleSubmit() {
         console.log(joblisting);
         createOrEdit(joblisting);
-
-
-
-
     }
 
     function handleInputChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -78,8 +74,20 @@ export default function JoblistingForm({ joblisting: selectedJoblisting, closeFo
                 <Form.Control type="text" className="form-control" placeholder="City" value={joblisting.city} name="city" onChange={handleInputChange} />
             </Form.Group>
 
-            <Button variant="outline-success" type="submit">Submit</Button>
-            <Button onClick={closeForm} variant="outline-secondary" type="submit">Cancel</Button>
+            <Button variant="outline-success" type="submit">Submit
+            if(submitting){
+
+                    <Spinner
+                        as="span"
+                        animation="border"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"
+                    />
+                }
+                 </Button>
+           
+<Button onClick={closeForm} variant="outline-secondary" type="submit">Cancel</Button>
     </Form>
         )
 }

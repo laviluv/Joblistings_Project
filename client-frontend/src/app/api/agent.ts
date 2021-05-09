@@ -2,10 +2,6 @@ import axios, { AxiosResponse } from 'axios';
 import { Joblisting } from '../models/joblisting';
 //import qs from 'qs';
 
-
-
-
-
 //const data = { title: 'PUTS FOR TITLE' };
 //const options = {
 //    data: qs.stringify(data),
@@ -13,8 +9,11 @@ import { Joblisting } from '../models/joblisting';
 //};
 //axios.put('https://localhost:44358/api/Joblistings/9E001D0E-B6B8-4403-19E7-08D9123991EF', options);
 
-
-
+const sleep = (delay: number) => {
+    return new Promise((resolve) => {
+        setTimeout(resolve, delay)
+    })
+}
 
 
 axios.defaults.baseURL = 'https://localhost:44358/api';
@@ -25,30 +24,34 @@ axios.defaults.headers = {
     'Accept': '*/*' 
 }
 
+axios.interceptors.response.use(async response => {
+    try {
+        await sleep(3000);
+        return response;
+    } catch (error) {
+        console.log(error);
+        return await Promise.reject(error);
+    }
+
+})
+
 const responseBody = <T> (response: AxiosResponse<T>) => response.data;
 
 const requests = {
 
-    get: <T> (url: string) => axios.get<T>(url).then(responseBody),
+    get: <T>(url: string) => axios.get<T>(url).then(responseBody),
     post: <T>(url: string, body: {}) => axios.post<T>(url, body).then(responseBody),
-    put: <T>(url: string, body: {
-}) => axios.put<T>(url, body).then(responseBody),
-
-delete: <T>(url: string) => axios.delete<T>(url).then(responseBody)
+    put: <T>(url: string, body: {}) => axios.put<T>(url, body).then(responseBody),
+    delete: <T>(url: string) => axios.delete<T>(url).then(responseBody)
 
 }
 
-
-
-        
-
-
 const Joblistings = {
     list: () => requests.get<Joblisting[]>('/joblistings'),
-    details: (id: string) => requests.get<Joblisting>('/joblistings/${id}'),
+    details: (id: string) => requests.get<Joblisting>(`/joblistings/${id}`),
     create: (joblisting: Joblisting) => axios.post<void>('/joblistings', joblisting),
 
-    update: (joblisting: Joblisting) => axios.put('/joblistings/${joblisting.id}', joblisting)
+    update: (joblisting: Joblisting) => axios.put(`/joblistings/${joblisting.id}`, joblisting)
         .catch(function (error) {
             console.log("THIS PUT ERROR AXIOS");
 
@@ -72,10 +75,8 @@ const Joblistings = {
 
         }),
 
-    delete: (id: string) => axios.delete<void>('/joblistings/${id}')
+    delete: (id: string) => axios.delete<void>(`/joblistings/${id}`)
         .catch(function (error) {
-
-           
 
             if (error.response) {
                 // The request was made and the server responded with a status code
@@ -98,8 +99,12 @@ const Joblistings = {
 
         })
 
-
 }
+
+const agent = { Joblistings }
+
+export default agent;
+
 
 
 ////////FELSOKNING
@@ -204,8 +209,5 @@ const Joblistings = {
 ////////FELSOKNING
 
 
-const agent = { Joblistings };
-
-export default agent;
 
 
